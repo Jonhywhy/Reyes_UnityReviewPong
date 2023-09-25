@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public TMP_Text scoreRight;
+    public TMP_Text scoreLeft;
+
+    public Pong pongsr;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +18,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+
+        scoreLeft.SetText("" + pongsr.giveScoreLeft);
+        scoreRight.SetText("" + pongsr.giveScoreRight);
     }
 }
