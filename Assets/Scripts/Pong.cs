@@ -98,11 +98,15 @@ public class Pong : MonoBehaviour
         {
             addSpeed++;
             pongRenderer.color = new Color(0.411988f, 0.3949359f, 0.6698113f);
+            pongRB.AddForce(pongRB.velocity * .1f, ForceMode2D.Impulse);
+
         }
         if (collision.gameObject.CompareTag("Player 2"))
         {
             addSpeed++;
+            pongRB.AddForce(pongDirection, ForceMode2D.Force);
             pongRenderer.color = new Color(0.7264151f, 0.3871929f, 0.3871929f);
+            pongRB.AddForce(pongRB.velocity * .1f, ForceMode2D.Impulse);
         }
     }
     
