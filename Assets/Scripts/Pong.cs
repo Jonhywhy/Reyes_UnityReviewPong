@@ -9,12 +9,14 @@ public class Pong : MonoBehaviour
     private SpriteRenderer pongRenderer;
     private Vector2 pongDirection;
 
+
     public bool spacesPress;
     public bool score;
     public bool scoreRight;
     public bool scoreLeft;
     public int giveScoreLeft;
     public int giveScoreRight;
+    public float addSpeed;
 
     // Start is called before the firSst frame update
     void Start()
@@ -28,7 +30,7 @@ public class Pong : MonoBehaviour
     void FixedUpdate()
     {
 
-         int[] random = new int [6];
+        int[] random = new int [6];
          random[0] = 6;
          random[1] = 7;
          random[2] = 8;
@@ -57,8 +59,8 @@ public class Pong : MonoBehaviour
 
         if (!spacesPress && Input.GetKey(KeyCode.Space) && scoreLeft)
         {
-            float x = 6;
-            float y = random[Random.Range(0, random.Length)];
+            float x= 6;
+            float  y = random[Random.Range(0, random.Length)];
             pongDirection = new Vector2(x, y);
             pongRB.AddForce(pongDirection, ForceMode2D.Impulse);
             spacesPress = true;
@@ -67,9 +69,10 @@ public class Pong : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
         if (collision.gameObject.CompareTag("Score Left"))
         {
-            giveScoreLeft ++;
+            giveScoreLeft++;
             pongRenderer.color = new Color(0.411988f, 0.3949359f, 0.6698113f);
             pongRB.velocity = new Vector2(0, 0f);
             transform.position = new Vector3(-5f, 0f, 0f);
@@ -79,7 +82,7 @@ public class Pong : MonoBehaviour
             scoreRight = false;
         }
 
-        if(collision.gameObject.CompareTag("Score Right"))
+        if (collision.gameObject.CompareTag("Score Right"))
         {
             giveScoreRight++;
             pongRenderer.color = new Color(0.7264151f, 0.3871929f, 0.3871929f);
@@ -91,12 +94,14 @@ public class Pong : MonoBehaviour
             scoreLeft = false;
         }
 
-        if(collision.gameObject.CompareTag("Player 1"))
+        if (collision.gameObject.CompareTag("Player 1"))
         {
+            addSpeed++;
             pongRenderer.color = new Color(0.411988f, 0.3949359f, 0.6698113f);
         }
         if (collision.gameObject.CompareTag("Player 2"))
         {
+            addSpeed++;
             pongRenderer.color = new Color(0.7264151f, 0.3871929f, 0.3871929f);
         }
     }
