@@ -7,7 +7,7 @@ public class Pong : MonoBehaviour
     private Collider2D pongC;
     private Rigidbody2D pongRB;
     private SpriteRenderer pongRenderer;
-    private Vector2 pongDirection;
+    public Vector2 pongDirection;
 
 
     public bool spacesPress;

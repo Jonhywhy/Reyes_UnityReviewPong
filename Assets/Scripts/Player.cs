@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    public Transform pong ;
+
+    private Vector2 aI;
+
     private Rigidbody2D player;
+
     public float move;
 
     // Start is called before the first frame update
@@ -28,7 +34,7 @@ public class Player : MonoBehaviour
                 player.AddForce(new Vector2(0, -move), ForceMode2D.Force);
             }
         }
-        if (CompareTag("Player 2"))
+        if (CompareTag("Player 2") && SceneManager.GetActiveScene().name == "Game")
         {
             if (Input.GetKey(KeyCode.UpArrow))
             {
@@ -38,10 +44,9 @@ public class Player : MonoBehaviour
             {
                 player.AddForce(new Vector2(0, -move), ForceMode2D.Force);
             }
-        }
+
+        } 
 
 
     }
-
-
 }
