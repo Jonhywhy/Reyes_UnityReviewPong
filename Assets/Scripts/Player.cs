@@ -5,14 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public Transform pong ;
-
-    private Vector2 aI;
+    public Transform pong;
+    public Vector3 aI;
 
     private Rigidbody2D player;
 
     public float move;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +32,7 @@ public class Player : MonoBehaviour
                 player.AddForce(new Vector2(0, -move), ForceMode2D.Force);
             }
         }
-        if (CompareTag("Player 2") && SceneManager.GetActiveScene().name == "Game")
+        if (CompareTag("Player 2") && SceneManager.GetActiveScene().name == "game")
         {
             if (Input.GetKey(KeyCode.UpArrow))
             {
@@ -45,7 +43,14 @@ public class Player : MonoBehaviour
                 player.AddForce(new Vector2(0, -move), ForceMode2D.Force);
             }
 
-        } 
+        }else if (CompareTag("Player 2") && SceneManager.GetActiveScene().name == "OneGamer")
+
+        {
+            this.aI.y = pong.position.y;
+            transform.localPosition = aI;
+
+        }
+
 
 
     }
